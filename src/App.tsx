@@ -77,7 +77,10 @@ const Container = styled.div`
     align-items: center;
     align-self: center;
     gap: 30px;
-    
+    @media screen and (min-width: 300px) and (max-width: 1023px){
+        flex-direction: column;
+        justify-content: flex-start;
+    }    
 `
 
 //*****************************************************
