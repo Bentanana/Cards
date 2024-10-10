@@ -3,6 +3,7 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 import picture from '../src/assets/images/img1.png';
 import pictureCat from '../src/assets/images/img2.jpg';
+import pictureHouses from '../src/assets/images/img3.jpg';
 
 function App() {
    return (
@@ -19,12 +20,21 @@ function App() {
             </Box>
 
             <Box>
-               <Picture src={pictureCat} alt=""/>
-               <Title titleType={"headName"} color={"#635e81"}>This is my picture N2</Title>
+               <Picture src={pictureHouses} alt=""/>
+               <Title titleType={"headName"} color={"#e81445"}>This is my picture N2</Title>
                <Title titleType={"description"}>Description of my picture...</Title>
                <div>
                   <Buttons btnType={"btnCard2Primary"}>See more</Buttons>
                   <Buttons btnType={"btnCard2Outlined"}>Save</Buttons>
+               </div>
+            </Box>
+            <Box>
+               <Picture src={pictureCat} alt=""/>
+               <Title titleType={"headName"} color={"#635e81"}>This is my picture N3</Title>
+               <Title titleType={"description"}>Description of my picture...</Title>
+               <div>
+                  <Buttons btnType={"btnCard3Primary"}>See more</Buttons>
+                  <Buttons btnType={"btnCard3Outlined"}>Save</Buttons>
                </div>
             </Box>
          </Container>
@@ -99,7 +109,7 @@ const Box = styled.div`
 
     color: olive;
     background-color: #e7e6e2;
-    box-shadow: 5px 10px 10px 0px #c3c7c7;
+    box-shadow: 5px 10px 10px  #c3c7c7;
 
     button {
         cursor: pointer;
@@ -116,7 +126,9 @@ type ButtonsPropsType = {
    outlined?: boolean
    btnCard2Primary?: boolean
    btnCard2Outlined?: boolean
-   btnType?: "primary" | "outlined" | "btnCard2Primary" | "btnCard2Outlined";
+   btnCard3Primary?: boolean
+   btnCard3Outlined?: boolean
+   btnType?: "primary" | "outlined" | "btnCard2Primary"| "btnCard2Outlined" | "btnCard3Primary" | "btnCard3Outlined";
 }
 
 const Buttons = styled.button <ButtonsPropsType>`
@@ -154,9 +166,32 @@ const Buttons = styled.button <ButtonsPropsType>`
           }
       `
    }
+ ${props => props.btnType === "btnCard2Primary" && css<ButtonsPropsType>
+         `   border: 2px solid ${props => props.color || "#e81445"};
+          color: ${props => props.color || "snow"};
+          background-color: #e81445;
 
+          &:hover {
+              background-color: #58508c;
+              border-color: #58508c;
+          }
+      `
+ }
 
-    ${props => props.btnType === "btnCard2Primary" && css<ButtonsPropsType>
+ ${props => props.btnType === "btnCard2Outlined" && css<ButtonsPropsType>
+         `   border: 2px solid ${props => props.color || "#e81445"};
+          color: ${props => props.color || "#e81445"};
+          background-color: transparent;
+
+          &:hover {
+              background-color: #58508c;
+              border-color: #58508c;
+              color: #ffffff;
+          }
+      `
+ }
+
+    ${props => props.btnType === "btnCard3Primary" && css<ButtonsPropsType>
       `   border: 2px solid ${props => props.color || "#58508c"};
           color: ${props => props.color || "snow"};
           background-color: #58508c;
@@ -168,7 +203,7 @@ const Buttons = styled.button <ButtonsPropsType>`
       `
    }
     
- ${props => props.btnType === "btnCard2Outlined" && css<ButtonsPropsType>
+ ${props => props.btnType === "btnCard3Outlined" && css<ButtonsPropsType>
       `   border: 2px solid ${props => props.color || "#58508c"};
           color: ${props => props.color || "#58508c"};
           background-color: transparent;
